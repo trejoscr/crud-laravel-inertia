@@ -1,0 +1,12 @@
+
+/*.is-invalid,*/
+.error-message{
+	color: red;
+}
+.is-invalid{
+	border-color: red;
+}
+
+.search-input-container{
+	float: right;
+}
