@@ -51,7 +51,7 @@
 						<div class="md:flex md:items-center mb-6">
 
 							<div class="md:w-1/3">
-								<label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="price">
+								<label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="id_brand">
 									Brand
 								</label>
 							</div>
@@ -68,6 +68,32 @@
 									</option>
 								</select>
 								<div class="error-message" v-if="errors.id_brand">{{ errors.id_brand }}</div>
+								
+							</div>
+
+						</div>
+
+						<div class="md:flex md:items-center mb-6">
+
+							<div class="md:w-1/3">
+								<label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="id_categories">
+									Categories
+								</label>
+							</div>
+							<div class="md:w-2/3">
+
+								<select
+									v-model="form.id_categories"
+									id="id_categories"
+									class="form-multiselect bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:border-purple-500"
+									:class = "(errors.id_categories)?'is-invalid':''"
+									multiple>
+									<option :value="null" disabled>Select categories</option>
+									<option v-for="option in categories" :value="option.id">
+										{{option.name}}
+									</option>
+								</select>
+								<div class="error-message" v-if="errors.id_categories">{{ errors.id_categories }}</div>
 								
 							</div>
 
@@ -113,6 +139,7 @@
 		},
 		props:{
 			brands: Array,
+			categories: Array,
 			errors: Object
 		},
 		data(){
@@ -120,7 +147,8 @@
 				form:{
 					name:null,
 					price:null,
-					id_brand:null
+					id_brand:null,
+					id_categories:null,
 				}
 			}
 		},

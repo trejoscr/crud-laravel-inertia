@@ -17,5 +17,10 @@ class Category extends Model
       $query->where('name', 'like', '%'.$search.'%');
     });
   }
+
+  public function products(){
+    //belongsToMany: una categoria pertenece a muchos productos
+    return $this->belongsToMany(Product::class, 'product_category');
+  }
   
 }

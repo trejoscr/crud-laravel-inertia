@@ -6,6 +6,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,4 +39,7 @@ Route::resource('brands', BrandController::class)
   ->middleware(['auth:sanctum', 'verified']);
 
 Route::resource('categories', CategoryController::class)
+  ->middleware(['auth:sanctum', 'verified']);
+
+Route::get('/products-categories', [ProductCategoryController::class, 'index'])
   ->middleware(['auth:sanctum', 'verified']);

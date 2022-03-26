@@ -19,8 +19,13 @@ class Product extends Model
   }
 
   public function brands(){
-    //belongsTo: un producto pertence e una categoria
+    //belongsTo: un producto pertence e una marca
     return $this->belongsTo(Brand::class, 'id_brand');
+  }
+
+  public function categories(){
+    //belongsToMany: un producto pertenece a muchas categorias
+    return $this->belongsToMany(Category::class, 'product_category');
   }
 
 }

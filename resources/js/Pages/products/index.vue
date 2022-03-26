@@ -61,6 +61,9 @@
               <th scope="col" class="px-6 py-3 text-left text-ms font-medium text-white font-semibold uppercase tracking-wider">
               	Brand
               </th>
+              <th scope="col" class="px-6 py-3 text-left text-ms font-medium text-white font-semibold uppercase tracking-wider">
+              	Categories
+              </th>
               <th scope="col" class="px-6 py-3 text-left text-ms font-medium text-white font-semibold uppercase tracking-wider">Actions</th>
             </tr>
           </thead>
@@ -74,6 +77,13 @@
               </td>
               <td class="text-white px-6 py-4 whitespace-nowrap">
               	{{product.brand}}
+              </td>
+              <td class="text-white px-6 py-4 whitespace-nowrap">
+              	<ul id="example-1">
+              		<li v-for="category in product.categories" :key="category.id">
+              			{{ category.name }}
+              		</li>
+              	</ul>
               </td>
               <td class="text-white px-6 py-4 whitespace-nowrap">
 

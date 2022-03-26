@@ -71,6 +71,34 @@
 
 						</div>
 
+						<div class="md:flex md:items-center mb-6">
+						
+							<div class="md:w-1/3">
+								<label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="price">
+									Categories
+								</label>
+							</div>
+							<div class="md:w-2/3">
+
+								<select
+									v-model="form.product_categories"
+									id="id_categories"
+									class="bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:border-purple-500"
+									:class = "(errors.id_categories)?'is-invalid':''"
+									multiple>
+									<option :value="null" disabled>Select categories</option>
+
+									<option v-for="option in categories" :value="option.id">
+										{{option.name}}
+									</option>
+
+								</select>
+								<div class="error-message" v-if="errors.id_categories">{{ errors.id_categories }}</div>
+								
+							</div>
+
+						</div>
+
 						<div class="md:flex md:items-center">
 							<div class="md:w-1/3"></div>
 							<div class="md:w-2/3">
@@ -106,23 +134,27 @@
 			Link
 		},
 		props:{
-			product:Object,
-			brands: Array,
-			errors: Object
+			product           : Object,
+			brands            : Array,
+			categories        : Array,
+			product_categories: Array,
+			errors    				: Object
 		},
 		data() {
 			return {
 				form: {
-					name: this.$props.product.name,
-					price: this.$props.product.price,
-					id_brand:this.$props.product.id_brand
+					name              : this.$props.product.name,
+					price             : this.$props.product.price,
+					id_brand          : this.$props.product.id_brand,
+					id_categories     : this.$props.product.id_categories,
+					product_categories: this.$props.product_categories,
 				},
 			};
 		},
 		methods:{
 			submit(){
 				this.$inertia.put(route('products.update', this.$props.product.id), this.form);
-			}
+			},
 		}
 
 	}
